@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:body>
+<h1>Create a new product</h1>
+	<h:form enctype="multipart/form-data">		
+		<h:panelGrid columns="7">
+		  <h:selectOneMenu value="#{pb.prod.category.categoryId}">
+            <f:selectItems value="#{pb.categoryList}" var="c"
+            itemLabel="#{c.categoryName}"
+            itemValue="#{c.categoryId}"/> 
+            </h:selectOneMenu>	
+			<h:outputLabel for="productName" value="Product Name:" />
+			<h:inputText id="productName" value="#{pb.prod.productName}" />
+		    <h:outputLabel for="price" value="Price:" />
+			<h:inputText id="price" value="#{pb.prod.price}" />
+			<h:outputLabel for="desc" value="Description:" />
+			<h:inputText id="desc" value="#{pb.prod.description}" />
+			<h:outputLabel for="review" value="Review:" />
+			<h:inputText id="review" value="#{pb.prod.review}" />
+			
+			<h:outputLabel for="image" value="Image:" />
+			<h:inputFile id="image" value="#{pb.img}" />
+			<!--  <h:commandButton value="Upload Image"
+action="#{uploadBean.saveFileToDisk()}"/>
+<h:commandButton value="Cancel" action="#{uploadBean.
+resetFile()}"/>-->
+
+			<h:outputLabel for="stockAvailability" value="Quantity :" />
+			<h:inputText id="stockAvailability" value="#{pb.prod.stockAvailability}" />			
+			<h:commandButton value="Add" action="#{pb.addProduct()}">
+			</h:commandButton>
+		</h:panelGrid>
+	</h:form>
+</h:body>
+</html>
+

@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+      
+<h:body>
+	<h:form>
+	<p:panel id="panel" header="Login" >
+		 <h:messages id="messages" /> 
+		<h:panelGrid columns="2" cellpadding="5">
+			<h:outputLabel for="emailId" value="Email:*" />
+			<h:inputText id="emailId" value="#{lb.user.emailId}" required="true" label="EmailId">					 
+			</h:inputText>								
+			<h:outputLabel for="password" value="Password:*" />						
+			<h:inputSecret id="password" value="#{lb.user.password}"  required="true" label="Password">
+			</h:inputSecret>			
+			</h:panelGrid>
+			<h:commandButton value="Login"  action="#{lb.check()}">
+			</h:commandButton>
+		
+		</p:panel>
+	</h:form>
+</h:body>
+</html>
+
+

@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<h:outputStylesheet library="css" name="/table_style.css" />
+</h:head>
+
+<h:body>
+	<h1>Products</h1>
+	<h:form>
+	<p>Welcome #{username.getEmailId()}</p>
+	<h:commandLink action="#{lb.logOut()}" value="Logout">
+	</h:commandLink>
+		<h:dataTable value="#{pb.products}" var="p" border="1" cellpadding="2"
+			cellspacing="2" binding="#{pb.productDatatable}">
+		
+			<h:column>
+				<f:facet name="header">Product ID</f:facet>
+				#{p.productId}
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Product Name</f:facet>
+				<h:inputText value="#{p.productName}" rendered="#{p.edited}" />
+				<h:outputText value="#{p.productName}" rendered="#{not p.edited}" />
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Category</f:facet>
+				<h:selectOneMenu value="#{p.category.categoryId}" 	rendered="#{p.edited}">
+					<f:selectItems value="#{pb.categoryList}" var="c"
+						itemLabel="#{c.categoryName}" itemValue="#{c.categoryId}" />
+				</h:selectOneMenu>
+				<h:outputText value="#{p.category.categoryName}"	rendered="#{not p.edited}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Price</f:facet>
+				<h:inputText value="#{p.price}" 	rendered="#{p.edited}" />
+				<h:outputText value="#{p.price}" 	rendered="#{not p.edited}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">description</f:facet>
+				<h:inputText value="#{p.description}" 	rendered="#{p.edited}" />
+				<h:outputText value="#{p.description}" 	rendered="#{not p.edited}" />
+			</h:column>
+
+			<!--<h:column></h:column> "#{p.image}" <f:param name="id" value="#{item.imageId}" />-->
+	
+			<h:column>
+				<f:facet name="header">Image</f:facet>
+			<h:graphicImage value="/images/#{p.productId}.jpg"  height="100" width="100"/>
+			<!--<h:img src="C:/image/#{p.productId}.jpg" height="100" width="100"/>-->
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Review</f:facet>
+				#{p.review}
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">stock Availability</f:facet>
+				<h:inputText value="#{p.stockAvailability}" 	rendered="#{p.edited}" />
+				<h:outputText value="#{p.stockAvailability}"	rendered="#{not p.edited}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Edit</f:facet>
+				<h:commandLink value="Edit" action="#{pb.editRow(p)}"	rendered="#{not p.edited}" />
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Delete</f:facet>
+				<h:commandLink value="Delete" action="#{pb.deleteProduct()}" />
+			</h:column>
+		
+		</h:dataTable>
+		<h:commandButton value="Save" action="#{pb.updateProduct()}" />
+	</h:form>
+</h:body>
+</html>
