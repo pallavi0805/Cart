@@ -10,6 +10,11 @@ import com.model.Users;
 import com.util.SessionUtils;
 import com.util.UserDAO;
 
+/**
+ * 
+ * @author Pallavi
+ *
+ */
 @ManagedBean(name="lb")
 @SessionScoped
 public class LoginBean 
