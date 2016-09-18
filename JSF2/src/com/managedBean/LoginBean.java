@@ -12,7 +12,7 @@ import com.util.UserDAO;
 
 /**
  * 
- * @author Pallavi
+ * @author Pallavi Jaiswal
  *
  */
 @ManagedBean(name="lb")
