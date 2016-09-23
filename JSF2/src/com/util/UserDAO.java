@@ -23,7 +23,7 @@ public class UserDAO
 
 			if(user.getPassword().equals(pwd))
 			{	
-				System.out.println(user.getAddress().get(0).getAddress1());
+	//			System.out.println(user.getAddress().get(0).getAddress1());
 				HttpSession session = SessionUtils.getSession();
 				session.setAttribute("username", user);
 

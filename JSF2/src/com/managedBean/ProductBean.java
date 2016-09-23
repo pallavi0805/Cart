@@ -129,4 +129,18 @@ public class ProductBean
 		}
 		return "Product";
 	}
+
+	// Action
+	public String buyProduct() 
+	{
+		for (Product p : products) {
+			p.setEdited(false);
+		}
+		//System.out.println("OUTPUT:  "+getProd().getProductName()+" "+getProd().getProductId()+" "+getProd().getCategory().getCategoryId());
+		Product p = (Product) productDatatable.getRowData();
+		System.out.println("Hello"+p.getCategory().getCategoryId()+" "+p.getCategory().getCategoryName());
+		prodDAO.updateProductToDb(p );	
+		return "Product";
+	}
+
 }
