@@ -98,11 +98,11 @@ public class Product {
 		this.review = review;
 	}
 	
-	public int getStockAvailability() {
-		return stockOnHand;
+	public void setStockOnHand(int stockOnHand) {
+		this.stockOnHand = stockOnHand;
 	}
 	
-	public void setStockAvailability(int stockAvailability) {
-		this.stockOnHand = stockAvailability;
+	public int getStockOnHand() {
+		return stockOnHand;
 	}
 }
