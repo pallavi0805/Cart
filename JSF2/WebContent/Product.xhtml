@@ -5,7 +5,9 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
 <h:head>
 	<h:outputStylesheet library="css" name="/table_style.css" />
 </h:head>
@@ -50,13 +52,10 @@
 				<h:inputText value="#{p.description}" 	rendered="#{p.edited}" />
 				<h:outputText value="#{p.description}" 	rendered="#{not p.edited}" />
 			</h:column>
-
-			<!--<h:column></h:column> "#{p.image}" <f:param name="id" value="#{item.imageId}" />-->
 	
 			<h:column>
 				<f:facet name="header">Image</f:facet>
-			<h:graphicImage value="/images/#{p.productId}.jpg"  height="100" width="100"/>
-			<!--<h:img src="C:/image/#{p.productId}.jpg" height="100" width="100"/>-->
+				<h:graphicImage value="C:/bkp/cart/images/#{p.productId}.jpg" height="100" width="100"/>
 			</h:column>
 			
 			<h:column>
@@ -65,20 +64,28 @@
 			</h:column>
 			
 			<h:column>
-				<f:facet name="header">stock Availability</f:facet>
-				<h:inputText value="#{p.stockAvailability}" 	rendered="#{p.edited}" />
-				<h:outputText value="#{p.stockAvailability}"	rendered="#{not p.edited}" />
+				<f:facet name="header">In Stock</f:facet>
+				<h:inputText value="#{p.stockOnHand}" 	rendered="#{p.edited}" />
+				<h:outputText value="#{p.stockOnHand}"	rendered="#{not p.edited}" />
 			</h:column>
 
-			<h:column>
-				<f:facet name="header">Edit</f:facet>
-				<h:commandLink value="Edit" action="#{pb.editRow(p)}"	rendered="#{not p.edited}" />
-			</h:column>
-			
-			<h:column>
-				<f:facet name="header">Delete</f:facet>
-				<h:commandLink value="Delete" action="#{pb.deleteProduct()}" />
-			</h:column>
+			<c:if test="#{username.getRole() == 'admin'}">
+	 			<h:column>
+					<f:facet name="header">Edit</f:facet>
+					<h:commandLink value="Edit" action="#{pb.editRow(p)}"	rendered="#{not p.edited}" />
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">Delete</f:facet>
+					<h:commandLink value="Delete" action="#{pb.deleteProduct()}" />
+				</h:column>
+			</c:if>
+			<c:if test="#{username.getRole() != 'admin'}">
+				<h:column>
+					<f:facet name="header">Buy</f:facet>
+					<h:commandLink value="Buy" action="#{pb.buyProduct()}" />
+				</h:column>
+			</c:if>
 		
 		</h:dataTable>
 		<h:commandButton value="Save" action="#{pb.updateProduct()}" />

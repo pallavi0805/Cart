@@ -125,8 +125,22 @@ public class ProductBean
 		if(img != null)
 		{
 			File file = new File("/images/tmp.jpg");
-			file.renameTo(new File("/imagess/" + prod.getProductId() + ".jpg"));
+			file.renameTo(new File("C:/bkp/cart/images/" + prod.getProductId() + ".jpg"));
 		}
 		return "Product";
 	}
+
+	// Action
+	public String buyProduct() 
+	{
+		for (Product p : products) {
+			p.setEdited(false);
+		}
+		//System.out.println("OUTPUT:  "+getProd().getProductName()+" "+getProd().getProductId()+" "+getProd().getCategory().getCategoryId());
+		Product p = (Product) productDatatable.getRowData();
+		System.out.println("Hello"+p.getCategory().getCategoryId()+" "+p.getCategory().getCategoryName());
+		prodDAO.updateProductToDb(p );	
+		return "Product";
+	}
+
 }
