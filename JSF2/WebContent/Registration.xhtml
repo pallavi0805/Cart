@@ -6,15 +6,25 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core">
 
-<ui:composition template="">
-	<ui:define name="header">
-	    Add your header here or delete to use the default
-	</ui:define>
-	<ui:define name="content">
-	    Add your content here or delete to use the default
-	</ui:define>
-	<ui:define name="footer">
-	    Add your footer here or delete to use the default
-	</ui:define>
-</ui:composition>
+<h:body>
+	<h:form>
+	<p:panel id="panel" header="Registration" >
+		 <h:messages id="messages" /> 
+		<h:panelGrid columns="2" cellpadding="2">
+		    <h:outputLabel for="name" value="Name:" />
+			<h:inputText id="name" value="#{Rb.user.name}" >					 
+			</h:inputText>	
+			<h:outputLabel for="emailId" value="Email:" />
+			<h:inputText id="emailId" value="#{Rb.user.emailId}" >					 
+			</h:inputText>								
+			<h:outputLabel for="password" value="Password:" />						
+			<h:inputSecret id="password" value="#{Rb.user.password}" >
+			</h:inputSecret>			
+			</h:panelGrid>
+			<h:commandButton value="SIGN UP"  action="#{Rb.check()}">
+			</h:commandButton>
+		
+		</p:panel>
+	</h:form>
+</h:body>
 </html>

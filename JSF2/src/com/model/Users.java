@@ -17,19 +17,17 @@ public class Users {
 	@Column(name="EMAIL_ID")
 	public String emailId;
 	public String password;
-	String pincode;
-	@Column(name="FIRST_NAME")
-	String firstName;
-	@Column(name="LAST_NAME")
-	String lastName;
-	String address1;
-	String address2;
-	String city;	
-	String state;
+	@Column(name="NAME")
+	public String name;
 	@Column(name="CONTACT_NO")
 	String contactNo;
 	String role;
-	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}		
 	public int getUserId() {
 		return userId;
 	}
@@ -47,48 +45,6 @@ public class Users {
 	}
 	public void setPassword(String password) {
 		this.password = password;
-	}
-	public String getPincode() {
-		return pincode;
-	}
-	public void setPincode(String pincode) {
-		this.pincode = pincode;
-	}
-	public String getFirstName() {
-		return firstName;
-	}
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-	public String getLastName() {
-		return lastName;
-	}
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-	public String getAddress1() {
-		return address1;
-	}
-	public void setAddress1(String address1) {
-		this.address1 = address1;
-	}
-	public String getAddress2() {
-		return address2;
-	}
-	public void setAddress2(String address2) {
-		this.address2 = address2;
-	}
-	public String getCity() {
-		return city;
-	}
-	public void setCity(String city) {
-		this.city = city;
-	}
-	public String getState() {
-		return state;
-	}
-	public void setState(String state) {
-		this.state = state;
 	}
 	public String getContactNo() {
 		return contactNo;
