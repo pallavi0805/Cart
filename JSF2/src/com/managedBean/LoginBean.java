@@ -26,20 +26,19 @@ public class LoginBean
 	public String check() {
 		userDAO = new UserDAO();		
 		String result = userDAO.getUser(user.getEmailId(), user.getPassword());
-		
+
 		if (result.equals("No")) {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Email not found", "Login Error!!"));
 			return null;
-			}
+		}
 		else if(result.equals("Password incorrect!!"))	
 		{
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Password incorrect!!", "Login Error!!"));
 			return null;
-		} else {
-			
+		} else 
 			return "Success";
-		}
 	}
+
 	public String logOut() {
 		HttpSession session = SessionUtils.getSession();
 		session.invalidate();
@@ -53,5 +52,4 @@ public class LoginBean
 	public void setUser(Users user) {				
 		this.user = user;
 	}
-	
 }
