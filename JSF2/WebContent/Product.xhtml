@@ -55,7 +55,7 @@
 	
 			<h:column>
 				<f:facet name="header">Image</f:facet>
-			<h:graphicImage value="/images/#{p.productId}.jpg"  height="100" width="100"/>
+				<h:graphicImage value="C:/bkp/cart/images/#{p.productId}.jpg" height="100" width="100"/>
 			<!--<h:img src="C:/image/#{p.productId}.jpg" height="100" width="100"/>-->
 			</h:column>
 			
@@ -65,9 +65,9 @@
 			</h:column>
 			
 			<h:column>
-				<f:facet name="header">stock Availability</f:facet>
-				<h:inputText value="#{p.stockAvailability}" 	rendered="#{p.edited}" />
-				<h:outputText value="#{p.stockAvailability}"	rendered="#{not p.edited}" />
+				<f:facet name="header">In Stock</f:facet>
+				<h:inputText value="#{p.stockInHand}" 	rendered="#{p.edited}" />
+				<h:outputText value="#{p.stockInHand}"	rendered="#{not p.edited}" />
 			</h:column>
 
 			<h:column>

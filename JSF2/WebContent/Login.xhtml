@@ -8,22 +8,19 @@
       
 <h:body>
 	<h:form>
-	<p:panel id="panel" header="Login" >
-		 <h:messages id="messages" /> 
-		<h:panelGrid columns="2" cellpadding="5">
-			<h:outputLabel for="emailId" value="Email:*" />
-			<h:inputText id="emailId" value="#{lb.user.emailId}" required="true" label="EmailId">					 
-			</h:inputText>								
-			<h:outputLabel for="password" value="Password:*" />						
-			<h:inputSecret id="password" value="#{lb.user.password}"  required="true" label="Password">
-			</h:inputSecret>			
+		<p:panel id="panel" header="Login">
+			<h:messages id="messages" />
+			<h:panelGrid columns="2" cellpadding="5">
+				
+				<h:outputLabel for="emailId"  value="Email:*" />
+				<h:inputText    id="emailId"  value="#{lb.user.emailId}" required="true" label="Email"/>								
+				
+				<h:outputLabel for="password" value="Password:*" />
+				<h:inputSecret  id="password" value="#{lb.user.password}" required="true" label="Password"/>
+			
 			</h:panelGrid>
-			<h:commandButton value="Login"  action="#{lb.check()}">
-			</h:commandButton>
-		
+			<h:commandButton value="Login"  action="#{lb.check()}"/>	
 		</p:panel>
 	</h:form>
 </h:body>
 </html>
-
-

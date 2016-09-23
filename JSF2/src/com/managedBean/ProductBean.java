@@ -125,7 +125,7 @@ public class ProductBean
 		if(img != null)
 		{
 			File file = new File("/images/tmp.jpg");
-			file.renameTo(new File("/imagess/" + prod.getProductId() + ".jpg"));
+			file.renameTo(new File("C:/bkp/cart/images/" + prod.getProductId() + ".jpg"));
 		}
 		return "Product";
 	}
